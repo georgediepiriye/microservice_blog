@@ -6,13 +6,15 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+
+const posts = {};
+
 app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
-const posts = {};
-
 app.post("/events", (req, res) => {
+  console.log("in hereeeee");
   const { type, data } = req.body;
   if (type === "PostCreated") {
     const { id, title } = data;
@@ -28,10 +30,10 @@ app.post("/events", (req, res) => {
     const post = posts[postId];
     post.comments.push({ commentId, content });
   }
-  console.log(posts);
+
   res.send({});
 });
 
-app.listen(6000, () => {
-  console.log("server running on port 6000");
+app.listen(6001, () => {
+  console.log("server running on port 6001");
 });

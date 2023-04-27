@@ -12,25 +12,26 @@ const PostList = () => {
     
 
      const getPosts = async () => {
-         const res = await axios.get("http://localhost:5000/posts");
-         setPosts(res.data)
-    };
-    
-    const renderedPost = Object.values(posts).map((post) => {
-      return (
-        <div
-          className="card"
-          key={post.id}
-          style={{ width: "30%", marginBottom: "20px" }}
-        >
-          <div className="card-body">
-            <h3>{post.title}</h3>
-            <CommentList postId={post.id} />
-            <CommentCreate postId={post.id} />
-          </div>
-        </div>
-      );
-    });
+       const res = await axios.get("http://localhost:6001/posts");
+       console.log("got here");
+       setPosts(res.data);
+     };
+
+     const renderedPost = Object.values(posts).map((post) => {
+       return (
+         <div
+           className="card"
+           key={post.id}
+           style={{ width: "30%", marginBottom: "20px" }}
+         >
+           <div className="card-body">
+             <h3>{post.title}</h3>
+             <CommentList comments={post.comments} />
+             <CommentCreate postId={post.id} />
+           </div>
+         </div>
+       );
+     });
         
 
     return <div className='d-flex flex-row flex-wrap justify-content-between'>
