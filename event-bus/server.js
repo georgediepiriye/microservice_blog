@@ -8,9 +8,9 @@ app.use(bodyParser.json());
 
 app.post("/events", (req, res) => {
   const event = req.body;
-  axios.post("/events", "http://localhost:4000/events");
-  axios.post("/events", "http://localhost:5000/events");
-  axios.post("/events", "http://localhost:6000/events");
+  axios.post("http://localhost:4000/events", event);
+  axios.post("http://localhost:5000/events", event);
+  axios.post("http://localhost:6000/events", event);
 
   res.send({ status: "ok" });
 });
