@@ -1,7 +1,7 @@
-const express = require("express")
-const { randomBytes } = require("crypto")
-const bodyParser = require("body-parser")
-const cors = require("cors")
+const express = require("express");
+const { randomBytes } = require("crypto");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const axios = require("axios");
 
 const app = express();
@@ -38,5 +38,5 @@ app.post("/events", (req, res) => {
 });
 
 app.listen(5000, () => {
-    console.log("server running...")
-})
+  console.log("server running.........");
+});
