@@ -14,6 +14,7 @@ app.get("/posts", (req, res) => {
 });
 
 const handleEvent = (type, data) => {
+  console.log("Event Received: ", type);
   if (type === "PostCreated") {
     const { id, title } = data;
     posts[id] = {
@@ -50,7 +51,7 @@ app.post("/events", (req, res) => {
 
 app.listen(6001, async () => {
   console.log("server running on port 6001");
-  const res = await axios.get("http://localhost:7000/events");
+  const res = await axios.get("http://event-bus-srv:7000/events");
 
   for (let event of res.data) {
     console.log("Processing events: ", event.type);
